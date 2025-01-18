@@ -41,34 +41,7 @@
 
   <body>
     <!-- ======= Top Bar ======= -->
-    <div
-      id="topbar"
-      class="d-none d-lg-flex align-items-center fixed-top header-inner-pages"
-    >
-      <div class="container-fluid d-flex">
-        <div class="contact-info mr-auto"></div>
-        <div class="social-links">
-          <a href="https://twitter.com/tobiasnoethlich" class="twitter">
-            <i class="icofont-twitter"> </i>
-          </a>
-          <a href="https://github.com/tobinatore" class="github">
-            <i class="icofont-github"> </i>
-          </a>
-          <a
-            href="https://www.xing.com/profile/Tobias_Noethlich/cv"
-            class="xing"
-          >
-            <i class="icofont-xing"> </i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/tobias-noethlich/"
-            class="linkedin"
-          >
-            <i class="icofont-linkedin"> </i>
-          </a>
-        </div>
-      </div>
-    </div>
+   
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top header-inner-pages">
@@ -87,7 +60,6 @@
             <li><a href="#overview">Overview</a></li>
             <li><a href="#traversal">Traversal</a></li>
             <li><a href="#mst">MST</a></li>
-            <li><a href="#other">Others</a></li>
           </ul>
         </nav>
         <!-- .nav-menu -->
@@ -283,147 +255,12 @@
           </div>
         </section>
         <!-- SCC -->
-        <section id="scc">
-          <div class="container-fluid w-100">
-            <!-- Gradient divider -->
-            <hr
-              data-content="Strongly connected components"
-              class="hr-text cd-hide"
-            />
-            <div
-              class="w-50 p-2 rounded explanation row ml-auto mr-auto mt-2 mb-3 cd-hide"
-            >
-              <div class="col-sm-12">
-                A strongly connected component is a subset of vertices such that
-                any two vertices of this subset are reachable from each other.
-              </div>
-            </div>
-            <div class="card-deck mb-4 cd-hide">
-              <div
-                id="kosaraju's algorithm kosarajus algorithm"
-                class="algorithm shadow-highlight card"
-              >
-                <a href="kosarajus.html" class="unstyled-link">
-                  <div class="card-body">
-                    <h5 class="card-title">Kosaraju's algorithm</h5>
-                    <h6 class="card-subtitle">Strongly connected components</h6>
-                    <p class="card-text">
-                      Kosaraju's algorithm is a DFS based algorithm used to find
-                      Strongly Connected Components (SCC) in a graph. It is
-                      based on the idea that if one is able to reach a vertex v
-                      starting from vertex u, then one should be able to reach
-                      vertex u starting from vertex v and if such is the case,
-                      one can say that vertices u and v are strongly connected -
-                      they are in a strongly connected sub-graph. <br /><br />
-                      <b>Time Complexity:</b><br />
-                      <b>adjacency matrix:</b>&emsp;<i>O(|V|²)</i><br />
-                      <b>adjacency list:</b>&emsp; <i>O(|E|+|V|)</i>
-                    </p>
-                  </div>
-                </a>
-              </div>
-              <div
-                id="tarjan's algorithm tarjans algorithm"
-                class="algorithm shadow-highlight card"
-              >
-                <a href="tarjans.html" class="unstyled-link">
-                  <div class="card-body">
-                    <h5 class="card-title">Tarjan's algorithm</h5>
-                    <h6 class="card-subtitle">Strongly connected components</h6>
-                    <p class="card-text">
-                      Tarjan's algorithm is based on depth first search (DFS).
-                      The vertices are indexed as they are traversed by the DFS
-                      procedure. While returning from the recursion of DFS,
-                      every vertex V gets assigned a vertex L as a
-                      representative. L is a vertex with the least index that
-                      can be reach from V. Nodes with the same representative
-                      assigned are located in the same strongly connected
-                      component. <br /><br />
-                      <b>Time Complexity:</b><br />
-                      <i>O(|E|+|V|)</i>
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        
       </section>
     </main>
 
     <!-- ======= Footer ======= -->
-    <footer id="footer">
-      <div class="footer-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <div class="footer-info">
-                <h3>AlgoVis.io</h3>
-                <strong>Email:</strong> hello@algovis.io<br />
-                <div class="social-links mt-3">
-                  <a href="https://twitter.com/tobiasnoethlich" class="twitter"
-                    ><i class="icofont-twitter"></i
-                  ></a>
-                  <a href="https://github.com/tobinatore" class="github"
-                    ><i class="icofont-github"></i
-                  ></a>
-                  <a
-                    href="https://www.xing.com/profile/Tobias_Noethlich/cv"
-                    class="xing"
-                    ><i class="icofont-xing"></i
-                  ></a>
-                  <a
-                    href="https://www.linkedin.com/in/tobias-noethlich/"
-                    class="linkedin"
-                    ><i class="icofont-linkedin"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 col-md-6 footer-links"></div>
-            <div class="col-lg-2 col-md-6 footer-links">
-              <h4>Useful Links</h4>
-              <ul>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="index.html">Home</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="index.html#about">About us</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="index.html#categories">Categories</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="#">Terms of service</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="privacypolicy.html">Privacy policy</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="copyright">
-          &copy; Copyright <strong><span>AlgoVis.io</span></strong
-          >. All Rights Reserved
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-      </div>
-    </footer>
+   
     <!-- End Footer -->
 
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

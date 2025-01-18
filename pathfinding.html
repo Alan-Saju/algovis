@@ -44,34 +44,6 @@
   </head>
 
   <body>
-    <!-- ======= Top Bar ======= -->
-    <div
-      id="topbar"
-      class="d-none d-lg-flex align-items-center fixed-top header-inner-pages"
-    >
-      <div class="container-fluid d-flex">
-        <div class="contact-info mr-auto"></div>
-        <div class="social-links">
-          <a href="https://twitter.com/tobiasnoethlich" class="twitter"
-            ><i class="icofont-twitter"></i
-          ></a>
-          <a href="https://github.com/tobinatore" class="github"
-            ><i class="icofont-github"></i
-          ></a>
-          <a
-            href="https://www.xing.com/profile/Tobias_Noethlich/cv"
-            class="xing"
-            ><i class="icofont-xing"></i
-          ></a>
-          <a
-            href="https://www.linkedin.com/in/tobias-noethlich/"
-            class="linkedin"
-            ><i class="icofont-linkedin"></i
-          ></a>
-        </div>
-      </div>
-    </div>
-
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top header-inner-pages">
       <div class="container-fluid d-flex align-items-center">
@@ -109,160 +81,117 @@
 
       <section class="inner-page pt-2">
         <div class="container-fluid">
-          <div class="mb-2">
-            <div class="row mx-auto">
-              <div class="col-sm-2 pl-0">
-                <div class="dropdown">
-                  <button
-                    class="btn btn-dark btn-block dropdown-toggle"
-                    type="button"
-                    id="dropdownAlgo"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Select an Algorithm
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownAlgo">
-                    <button
-                      class="dropdown-item"
-                      onclick="setAlgo(1)"
-                      type="button"
-                    >
-                      A*
-                    </button>
-                    <button
-                      class="dropdown-item"
-                      onclick="setAlgo(2)"
-                      type="button"
-                    >
-                      BFS
-                    </button>
-                    <button
-                      class="dropdown-item"
-                      onclick="setAlgo(3)"
-                      type="button"
-                    >
-                      DFS
-                    </button>
-                    <button
-                      class="dropdown-item"
-                      onclick="setAlgo(4)"
-                      type="button"
-                    >
-                      Dijkstra's algorithm
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-2">
-                <div class="dropdown">
-                  <button
-                    class="btn btn-block btn-dark dropdown-toggle"
-                    type="button"
-                    id="dropdownGen"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Generate Maze
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownGen">
-                    <button
-                      class="dropdown-item"
-                      type="button"
-                      onclick='generateMaze("recDFS")'
-                    >
-                      Recursive DFS
-                    </button>
-                    <button
-                      class="dropdown-item"
-                      type="button"
-                      onclick='generateMaze("growing")'
-                    >
-                      Growing tree algorithm
-                    </button>
-                    <button
-                      class="dropdown-item"
-                      type="button"
-                      onclick='generateMaze("binTree")'
-                    >
-                      Binary tree generator
-                    </button>
-                    <button
-                      class="dropdown-item"
-                      type="button"
-                      onclick='generateMaze("side")'
-                    >
-                      Sidewinder algorithm
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-2">
-                <button
-                  class="btn btn-block btn-dark"
-                  id="btnClear"
-                  onclick="clearGrid()"
-                >
-                  Clear grid
-                </button>
-              </div>
-              <div class="col-sm-2">
-                <button
-                  class="btn btn-block btn-danger red"
-                  type="button"
-                  id="startPf"
-                  onclick="runAlgo()"
-                >
-                  Visualize Algorithm
-                </button>
-              </div>
-              <div class="col-sm-4 pr-0">
-                <div
-                  class="alert alert-success text-center my-0 py-2"
-                  role="alert"
-                  hidden
-                >
-                  <div class="row">
-                    <div class="col-1">
-                      <i class="bx bx-check-circle"></i>
-                    </div>
-                    <div class="col-11">
-                      Algorithm always finds shortest path.
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="alert alert-warning text-center my-0 py-2"
-                  role="alert"
-                  hidden
-                >
-                  <div class="row">
-                    <div class="col-1">
-                      <i class="bx bx-error-circle"></i>
-                    </div>
-                    <div class="col-11">
-                      Algorithm does not guarantee shortest path.
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="alert alert-danger my-0 py-2"
-                  id="algowarning"
-                  role="alert"
-                  hidden
-                >
-                  <div class="row">
-                    <div class="col-1">
-                      <i class="bx bx-x-circle"></i>
-                    </div>
-                    <div class="col-11">Please select an algorithm first.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <!-- Replace the existing button row with this code -->
+<div class="mb-2">
+  <div class="row mx-auto">
+    <div class="col-sm-3">
+      <div class="dropdown">
+        <button
+          class="btn btn-dark btn-block dropdown-toggle"
+          type="button"
+          id="dropdownAlgo"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Select an Algorithm
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownAlgo">
+          <button
+            class="dropdown-item"
+            onclick="setAlgo(1)"
+            type="button"
+          >
+            A*
+          </button>
+          <button
+            class="dropdown-item"
+            onclick="setAlgo(2)"
+            type="button"
+          >
+            BFS
+          </button>
+          <button
+            class="dropdown-item"
+            onclick="setAlgo(3)"
+            type="button"
+          >
+            DFS
+          </button>
+          <button
+            class="dropdown-item"
+            onclick="setAlgo(4)"
+            type="button"
+          >
+            Dijkstra's algorithm
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <button
+        class="btn btn-block btn-dark"
+        id="btnClear"
+        onclick="clearGrid()"
+      >
+        Clear grid
+      </button>
+    </div>
+    <div class="col-sm-3">
+      <button
+        class="btn btn-block btn-danger red"
+        type="button"
+        id="startPf"
+        onclick="runAlgo()"
+      >
+        Visualize Algorithm
+      </button>
+    </div>
+    <div class="col-sm-3">
+      <div
+        class="alert alert-success text-center my-0 py-2"
+        role="alert"
+        hidden
+      >
+        <div class="row">
+          <div class="col-1">
+            <i class="bx bx-check-circle"></i>
           </div>
+          <div class="col-11">
+            Algorithm always finds shortest path.
+          </div>
+        </div>
+      </div>
+      <div
+        class="alert alert-warning text-center my-0 py-2"
+        role="alert"
+        hidden
+      >
+        <div class="row">
+          <div class="col-1">
+            <i class="bx bx-error-circle"></i>
+          </div>
+          <div class="col-11">
+            Algorithm does not guarantee shortest path.
+          </div>
+        </div>
+      </div>
+      <div
+        class="alert alert-danger my-0 py-2"
+        id="algowarning"
+        role="alert"
+        hidden
+      >
+        <div class="row">
+          <div class="col-1">
+            <i class="bx bx-x-circle"></i>
+          </div>
+          <div class="col-11">Please select an algorithm first.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
           <div class="row justify-content-center mx-auto"></div>
           <div id="grid"></div>
           <hr data-content="Explanation" class="hr-text mb-3 mt-4" />
@@ -455,80 +384,7 @@
         </div>
       </section>
     </main>
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-      <div class="footer-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <div class="footer-info">
-                <h3>AlgoVis.io</h3>
-                <strong>Feel free to hit me up on social media:</strong><br />
-                <div class="social-links mt-3">
-                  <a href="https://twitter.com/tobiasnoethlich" class="twitter"
-                    ><i class="icofont-twitter"></i
-                  ></a>
-                  <a href="https://github.com/tobinatore" class="github"
-                    ><i class="icofont-github"></i
-                  ></a>
-                  <a
-                    href="https://www.xing.com/profile/Tobias_Noethlich/cv"
-                    class="xing"
-                    ><i class="icofont-xing"></i
-                  ></a>
-                  <a
-                    href="https://www.linkedin.com/in/tobias-noethlich/"
-                    class="linkedin"
-                    ><i class="icofont-linkedin"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 col-md-6 footer-links"></div>
-            <div class="col-lg-2 col-md-6 footer-links">
-              <h4>Useful Links</h4>
-              <ul>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="index.html">Home</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="index.html#about">About us</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="index.html#categories">Categories</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="#">Terms of service</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i>
-                  <a href="privacypolicy.html">Privacy policy</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="copyright">
-          &copy; Copyright <strong><span>AlgoVis.io</span></strong
-          >. All Rights Reserved
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-      </div>
-    </footer>
-    <!-- End Footer -->
+    
 
     <!--<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>-->
     <div id="preloader"></div>
@@ -974,99 +830,7 @@
         }
       }
 
-      async function generateMaze(type) {
-        var mazeGen;
-        var cell = undefined;
-        switch (type) {
-          case "recDFS":
-            mazeGen = new RecursiveDFS();
-            cell = {
-              x: Math.round(Math.random() * gridData[0].length),
-              y: Math.round(Math.random() * gridData.length),
-            };
-            break;
-          case "growing":
-            mazeGen = new GrowingTree();
-            cell = {
-              x: Math.round(Math.random() * (gridData[0].length - 2)) + 1,
-              y: Math.round(Math.random() * (gridData.length - 2)) + 1,
-            };
-            let colEven = gridData[0].length % 2 == 0;
-            let rowEven = gridData.length % 2 == 0;
-
-            if (colEven) {
-              cell.x = cell.x % 2 == 0 ? cell.x : cell.x + 1;
-            } else {
-              cell.x = cell.x % 2 == 0 ? cell.x + 1 : cell.x;
-            }
-            if (rowEven) {
-              cell.y = cell.y % 2 == 0 ? cell.y : cell.y + 1;
-            } else {
-              cell.y = cell.y % 2 == 0 ? cell.y + 1 : cell.y;
-            }
-
-            break;
-          case "binTree":
-            mazeGen = new BinaryTreeGenerator();
-            break;
-          case "side":
-            mazeGen = new Sidewinder();
-            break;
-          default:
-            mazeGen = new RecursiveDFS();
-            cell = {
-              x: Math.round(Math.random() * gridData[0].length),
-              y: Math.round(Math.random() * gridData.length),
-            };
-            break;
-        }
-
-        $("#startPf").prop("disabled", true);
-        $("#dropdownAlgo").prop("disabled", true);
-        $("#dropdownGen").prop("disabled", true);
-        $("#btnClear").prop("disabled", true);
-
-        if (cell) {
-          await mazeGen.startMaze(cell);
-        } else {
-          await mazeGen.startMaze();
-        }
-
-        while (
-          gridData[startPos.y][startPos.x].type == "wall" ||
-          (startPos.x == endPos.x && startPos.y == endPos.y)
-        ) {
-          if (startPos.x > 0) {
-            startPos.x -= 1;
-            d3.select("#start").attr("x", startPos.x * 25);
-            continue;
-          }
-          if (startPos.x < gridData[0].length - 2) {
-            startPos.x += 1;
-            d3.select("#start").attr("x", startPos.x * 25);
-          }
-        }
-
-        while (
-          gridData[endPos.y][endPos.x].type == "wall" ||
-          (startPos.x == endPos.x && startPos.y == endPos.y)
-        ) {
-          if (endPos.x > 0) {
-            endPos.x -= 1;
-            d3.select("#end").attr("x", endPos.x * 25);
-            continue;
-          }
-          if (endPos.x < gridData[0].length - 2) {
-            endPos.x += 1;
-            d3.select("#end").attr("x", endPos.x * 25);
-          }
-        }
-
-        $("#startPf").prop("disabled", false);
-        $("#dropdownAlgo").prop("disabled", false);
-        $("#dropdownGen").prop("disabled", false);
-        $("#btnClear").prop("disabled", false);
-      }
+ 
     </script>
   </body>
 </html>

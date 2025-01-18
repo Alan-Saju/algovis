@@ -1,128 +1,156 @@
-/** Class for running the A* pathfinding algorithm */
 class AStar {
   constructor() {}
 
   /**
-   * Run the algorithm with the provided values.
-   * @param {Object[][]} grid - A 2d array representing the grid the algorithm runs on
-   * @param {Object} start - Row and column of the source node
-   * @param {Object} end - Row and column of the target node
+   * Runs A* algorithm with animated visualization
+   * @param {Object[][]} grid - The grid to run the algorithm on
+   * @param {Object} start - Starting position {x, y}
+   * @param {Object} end - Target position {x, y}
    */
   async run(grid, start, end) {
-    // reset the grid so previous runs don't affect this one
     resetGrid(grid);
-    // initialize the list containing the unvisited nodes and the
-    // starting point
-    var openSet = [];
-    var startingPoint = grid[start.y][start.x];
-    startingPoint.dist = 0;
-    startingPoint.fScore = this.h(startingPoint, end);
-    openSet.push(startingPoint);
 
-    // run as long as there are unexplored nodes or until target is found
-    while (!openSet.length == 0) {
-      var curr = this.findLowestFScore(openSet, end);
-      curr.visited = true;
+    const openSet = [];
+    const startNode = grid[start.y][start.x];
+    startNode.dist = 0;
+    startNode.fScore = this.calculateHeuristic(startNode, end);
+    openSet.push(startNode);
 
-      await colorVisited(curr);
+    while (openSet.length > 0) {
+      const current = this.findBestNode(openSet);
+      current.visited = true;
 
-      // the current node is the target node
-      // -> highlight path and break
-      if (curr.row == end.y && curr.col == end.x) {
-        makePath(grid, end);
-        break;
+      // Animate visiting current node
+      await this.animateVisit(current);
+
+      if (current.row === end.y && current.col === end.x) {
+        await this.animatePath(grid, end);
+        return true;
       }
 
-      var nbs = getNeighbours(grid, curr);
+      const neighbors = this.getNeighbors(grid, current);
+      await this.processNeighbors(neighbors, current, openSet, end);
+    }
 
-      //examine every neighbour of the current node
-      for (const nb in nbs) {
-        var neighbour = nbs[nb];
+    return false;
+  }
 
-        // conditional operator evaluating to 'true' if neighbour is already in
-        // openSet, or 'false' if it isn't
-        var inOpenSet = this.isInOpenset(openSet, neighbour);
+  async animateVisit(node) {
+    await colorBlock(
+      `#node-${node.row}-${node.col}`,
+      "#64B5F6",
+      150,
+      20,
+      "fill"
+    );
+  }
 
-        // skip all following steps if neighbour has been visited
-        if (neighbour.visited) {
-          continue;
-        }
+  async animatePath(grid, end) {
+    let current = grid[end.y][end.x];
+    const path = [];
 
-        var tentative_gScore =
-          curr.dist + (neighbour.type == "weight" ? 10 : 1);
+    while (current.predecessor) {
+      path.unshift(current);
+      current = grid[current.predecessor.row][current.predecessor.col];
+    }
+    path.unshift(current);
 
-        // neighbour does not need update -> skip remaining steps
-        if (inOpenSet && tentative_gScore >= nb.dist) {
-          continue;
-        }
+    for (const node of path) {
+      await colorBlock(
+        `#node-${node.row}-${node.col}`,
+        "#FDD835",
+        300,
+        30,
+        "fill"
+      );
+    }
+  }
 
-        // update neighbour and push it to openSet
-        neighbour.dist = tentative_gScore;
-        neighbour.predecessor = { col: curr.col, row: curr.row };
-        neighbour.fScore = neighbour.dist + this.h(neighbour, end);
+  async processNeighbors(neighbors, current, openSet, end) {
+    for (const neighbor of neighbors) {
+      if (neighbor.visited) continue;
 
-        if (!inOpenSet) {
-          openSet.push(neighbour);
-        }
+      const tentativeScore = current.dist + (neighbor.type === "weight" ? 10 : 1);
+
+      if (!this.isInOpenSet(openSet, neighbor)) {
+        openSet.push(neighbor);
+        await colorBlock(
+          `#node-${neighbor.row}-${neighbor.col}`,
+          "#90CAF9",
+          100,
+          10,
+          "fill"
+        );
+      }
+
+      if (tentativeScore < neighbor.dist) {
+        neighbor.predecessor = { row: current.row, col: current.col };
+        neighbor.dist = tentativeScore;
+        neighbor.fScore = tentativeScore + this.calculateHeuristic(neighbor, end);
+        await this.animateHeuristic(neighbor, end);
       }
     }
   }
 
-  /**
-   * Checks whether a given cell is in the open set.
-   * @param {Object[]} openSet - The open set
-   * @param {Object} neighbour - The cell to check
-   * @returns {boolean} - True if cell is in openSet, false else.
-   */
-  isInOpenset(openSet, neighbour) {
-    return openSet.findIndex(
-      (elem) => elem.x == neighbour.x && elem.y == neighbour.y
-    ) == -1
-      ? false
-      : true;
+  async animateHeuristic(node, end) {
+    const heuristic = this.calculateHeuristic(node, end);
+    const element = document.querySelector(`#heuristic-${node.row}-${node.col}`);
+    if (element) element.textContent = heuristic;
   }
 
-  /**
-   * Heuristic function for the A* algorithm. Calculates Manhattan distance.
-   * @param {Object} node - The current node
-   * @param {Object} end  - The target node
-   * @returns {number} - The Manhattan distance between node and end
-   */
-  h(node, end) {
-    // -> Manhattan distance = |x0-x1| + |y0-y1|
-    var manhDist = Math.abs(node.col - end.x) + Math.abs(node.row - end.y);
-    return manhDist;
-  }
+  findBestNode(openSet) {
+    let bestNodeIndex = 0;
 
-  /**
-   * Finds the node with the lowest fScore, removes it from the list
-   * and returns it.
-   * Takes into consideration raw heuristic distance should there be
-   * two nodes with the same fScore.
-   * @param {Object[]} q - List of all unvisited nodes
-   * @param {Object} end - The target node, needed for calculating heuristic distance
-   * @returns {Object} - The node with the lowest fScore
-   */
-  findLowestFScore(q, end) {
-    var closest = { fScore: Infinity };
-    var ind = 0;
-
-    for (let i = 0; i < q.length; i++) {
-      if (closest.fScore > q[i].fScore) {
-        // fScore of the current node is smaller than the
-        // fScore of the closest node so far
-        // -> set it as closest and update index
-        closest = q[i];
-        ind = i;
-      } else if (this.h(closest, end) > this.h(q[i], end)) {
-        // fScores are equal
-        // -> compare raw heuristic distances
-        closest = q[i];
-        ind = i;
+    for (let i = 1; i < openSet.length; i++) {
+      if (
+        openSet[i].fScore < openSet[bestNodeIndex].fScore ||
+        (openSet[i].fScore === openSet[bestNodeIndex].fScore &&
+          openSet[i].dist < openSet[bestNodeIndex].dist)
+      ) {
+        bestNodeIndex = i;
       }
     }
-    // remove closest node from the openSet
-    q.splice(ind, 1);
-    return closest;
+
+    return openSet.splice(bestNodeIndex, 1)[0];
+  }
+
+  getNeighbors(grid, node) {
+    const neighbors = [];
+    const directions = [
+      [-1, 0], // Up
+      [1, 0], // Down
+      [0, -1], // Left
+      [0, 1], // Right
+    ];
+
+    for (const [dx, dy] of directions) {
+      const newRow = node.row + dx;
+      const newCol = node.col + dy;
+
+      if (this.isValidPosition(grid, newRow, newCol)) {
+        neighbors.push(grid[newRow][newCol]);
+      }
+    }
+
+    return neighbors;
+  }
+
+  isValidPosition(grid, row, col) {
+    return (
+      row >= 0 &&
+      row < grid.length &&
+      col >= 0 &&
+      col < grid[0].length &&
+      grid[row][col].type !== "wall"
+    );
+  }
+
+  isInOpenSet(openSet, node) {
+    return openSet.some((n) => n.row === node.row && n.col === node.col);
+  }
+
+  calculateHeuristic(node, end) {
+    return Math.abs(node.col - end.x) + Math.abs(node.row - end.y);
   }
 }
+
