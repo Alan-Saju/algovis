@@ -59,8 +59,6 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="#overview">Overview</a></li>
             <li><a href="#comparison-sorts">Comparison sorts</a></li>
-            <li><a href="#non-comparison-sorts">Non-comparison sorts</a></li>
-            <li><a href="#other-sorts">Others</a></li>
           </ul>
         </nav>
         <!-- .nav-menu -->
@@ -150,117 +148,92 @@
           <div class="container-fluid w-100">
             <!-- Gradient divider -->
             <hr data-content="Comparison Sorts" class="hr-text mb-2 cd-hide" />
+            
             <div class="w-100 p-2 row mt-3 mb-3 cd-hide">
-              <div class="col-sm-1 col-md-1 col-lg-3"></div>
-              <div class="explanation col-sm-10 col-md-10 col-lg-6">
-                A comparison sort is a type of sorting algorithm that only reads
-                the list elements through a single abstract comparison operation
-                (often a "less than or equal to" operator or a three-way
-                comparison) that determines which of two elements should occur
-                first in the final sorted list.
+              <div class="col-12 col-lg-8 mx-auto">
+                <div class="explanation">
+                  A comparison sort is a type of sorting algorithm that only reads
+                  the list elements through a single abstract comparison operation
+                  (often a "less than or equal to" operator or a three-way
+                  comparison) that determines which of two elements should occur
+                  first in the final sorted list.
+                </div>
               </div>
-              <div class="col-sm-1 col-md-1 col-lg-3"></div>
             </div>
-            <div class="card-deck mb-4 cd-hide">
-              <div id="bubblesort" class="algorithm shadow-highlight card">
-                <a href="bubblesort.html" class="unstyled-link">
-                  <div class="card-body">
-                    <h5 class="card-title">Bubblesort</h5>
-                    <h6 class="card-subtitle">Comparison sort</h6>
-                    <p class="card-text">
-                      Bubblesort is a simple sorting algorithm that repeatedly
-                      steps through the list, compares adjacent elements and
-                      swaps them if they are in the wrong order. The pass
-                      through the list is repeated until the list is sorted.
-                      <br /><br />
-                      <b>Best-case:</b>&emsp;&emsp;<i> O(n)</i><br />
-                      <b>Average-case:</b> <i>O(n²)</i> <br />
-                      <b>Worst-case:</b>&emsp; <i>O(n²)</i><br />
-                    </p>
-                  </div>
-                </a>
+        
+            <div class="row justify-content-center">
+              <div id="bubblesort" class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="algorithm shadow-highlight card">
+                  <a href="bubblesort.html" class="unstyled-link">
+                    <div class="card-body">
+                      <h5 class="card-title">Bubblesort</h5>
+                      <h6 class="card-subtitle">Comparison sort</h6>
+                      <p class="card-text">
+                        Bubblesort repeatedly steps through the list, compares adjacent elements, 
+                        and swaps them if in the wrong order.
+                        <br /><b>Best-case:</b> <i>O(n)</i><br />
+                        <b>Average-case:</b> <i>O(n²)</i><br />
+                        <b>Worst-case:</b> <i>O(n²)</i>
+                      </p>
+                    </div>
+                  </a>
+                </div>
               </div>
-             
-             
-              
-            </div>
-            <div class="card-deck mb-4 cd-hide">
-              <div id="insertionsort" class="algorithm shadow-highlight card">
-                <a href="insertionsort.html" class="unstyled-link">
-                  <div class="card-body">
-                    <h5 class="card-title">Insertionsort</h5>
-                    <h6 class="card-subtitle">Comparison sort</h6>
-                    <p class="card-text">
-                      Insertion sort is a simple sorting algorithm that builds
-                      the final sorted list one item at a time by inserting each
-                      element at its correct position. <br /><br />
-                      <b>Best-case:</b>&emsp;&emsp;<i> O(n)</i><br />
-                      <b>Average-case:</b> <i>O(n²)</i> <br />
-                      <b>Worst-case:</b>&emsp; <i>O(n²)</i><br />
-                    </p>
-                  </div>
-                </a>
+        
+              <div id="insertionsort" class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="algorithm shadow-highlight card">
+                  <a href="insertionsort.html" class="unstyled-link">
+                    <div class="card-body">
+                      <h5 class="card-title">Insertionsort</h5>
+                      <h6 class="card-subtitle">Comparison sort</h6>
+                      <p class="card-text">
+                        Insertion sort builds the final sorted array one item at a time.
+                        <br /><b>Best-case:</b> <i>O(n)</i><br />
+                        <b>Average-case:</b> <i>O(n²)</i><br />
+                        <b>Worst-case:</b> <i>O(n²)</i>
+                      </p>
+                    </div>
+                  </a>
+                </div>
               </div>
-              <!-- TODO
-                    <div id="mergesort" class="algorithm shadow-highlight card" >
-                    <a href="mergesort.html" class="unstyled-link ">
-                            <div class="card-body">
-                            <h5 class="card-title">Mergesort</h5>
-                            <h6 class="card-subtitle">Comparison sort</h6>
-                            <p class="card-text">Bubblesort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. 
-                                <br><br>
-                                <b>Best-case:</b>&emsp;&emsp;<i> O(n)</i><br>
-                                <b>Average-case:</b> <i>O(n²)</i> <br>
-                                <b>Worst-case:</b>&emsp; <i>O(n²)</i><br></p>
-                            </div>
-                    </a>
-                </div>-->
-
-              <div id="quicksort" class="algorithm shadow-highlight card">
-                <a href="quicksort.html" class="unstyled-link">
-                  <div class="card-body">
-                    <h5 class="card-title">Quicksort</h5>
-                    <h6 class="card-subtitle">Comparison sort</h6>
-                    <p class="card-text">
-                      Quicksort is a divide-and-conquer algorithm. It works by
-                      selecting a 'pivot' element from the array and
-                      partitioning the other elements into two sub-arrays,
-                      according to whether they are less than or greater than
-                      the pivot. The sub-arrays are then sorted recursively.
-                      This can be done in-place, requiring small additional
-                      amounts of memory to perform the sorting.
-                      <br />
-                      <b>Best-case:</b>&emsp;&emsp;<i> O(n log n)</i><br />
-                      <b>Average-case:</b> <i>O(n log n)</i> <br />
-                      <b>Worst-case:</b>&emsp; <i>O(n²)</i><br />
-                    </p>
-                  </div>
-                </a>
+        
+              <div id="quicksort" class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="algorithm shadow-highlight card">
+                  <a href="quicksort.html" class="unstyled-link">
+                    <div class="card-body">
+                      <h5 class="card-title">Quicksort</h5>
+                      <h6 class="card-subtitle">Comparison sort</h6>
+                      <p class="card-text">
+                        Quicksort selects a pivot and partitions elements around it.
+                        <br /><b>Best-case:</b> <i>O(n log n)</i><br />
+                        <b>Average-case:</b> <i>O(n log n)</i><br />
+                        <b>Worst-case:</b> <i>O(n²)</i>
+                      </p>
+                    </div>
+                  </a>
+                </div>
               </div>
-              <div id="selectionsort" class="algorithm shadow-highlight card">
-                <a href="selectionsort.html" class="unstyled-link">
-                  <div class="card-body">
-                    <h5 class="card-title">Selection sort</h5>
-                    <h6 class="card-subtitle">Comparison sort</h6>
-                    <p class="card-text">
-                      Selection sort divides the input list into two parts: a
-                      sorted sublist of items which is built up from left to
-                      right and an unsorted sublist. The algorithm repeatedly
-                      iterates over the unsorted sublist, finds the smallest
-                      element in that sublist, swaps it with the leftmost
-                      unsorted element, and moves the sublist boundaries one
-                      element to the right. <br /><br />
-                      <b>Best-case:</b>&emsp;&emsp;<i> O(n)</i><br />
-                      <b>Average-case:</b> <i>O(n²)</i> <br />
-                      <b>Worst-case:</b>&emsp; <i>O(n²)</i><br />
-                    </p>
-                  </div>
-                </a>
+        
+              <div id="selectionsort" class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="algorithm shadow-highlight card">
+                  <a href="selectionsort.html" class="unstyled-link">
+                    <div class="card-body">
+                      <h5 class="card-title">Selection sort</h5>
+                      <h6 class="card-subtitle">Comparison sort</h6>
+                      <p class="card-text">
+                        Selection sort finds the smallest element and moves it to the front.
+                        <br /><b>Best-case:</b> <i>O(n)</i><br />
+                        <b>Average-case:</b> <i>O(n²)</i><br />
+                        <b>Worst-case:</b> <i>O(n²)</i>
+                      </p>
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <div id="results"></div>
         </section>
+        
 
      
 
